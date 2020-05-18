@@ -27,6 +27,28 @@
             border: 3px solid red;
             padding: 10px;
         }
+        .wave{
+            background: darkturquoise;
+            overflow: hidden;
+        }
+        .wave::after{
+            content: "";
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid greenyellow;
+            position: absolute;
+            border-radius: 40%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -60%);
+            animation: waves 8s  infinite;
+        }
+        @keyframes waves{
+            100%{
+                transform: translate(-50%, -138%) rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
