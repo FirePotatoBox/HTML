@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            /* display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: gray;
+        }
+        figure{
+            width: 200px;
+            height: 60px;
+            cursor: pointer;
+            perspective: 500px;
+            border: 1px solid red;
+
+        }
+        figure div{
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+        figure:hover div{
+            /* transform: rotateX(-90deg); */
+            animation: test1 1s linear infinite;
+        }
+        span.face{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            box-sizing: border-box;
+            border: 5px solid #fff;
+            line-height: 50px;
+            font-size: 17pt;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        span.face:nth-child(1){
+            color: red;
+            background: green;
+            transform: translate3d(0, 0, 30px);
+        }
+        span.face:nth-child(2){
+            color: red;
+            background: green;
+            transform: rotateX(90deg) translate3d(0, 0, 30px);
+        }
+        span.face:nth-child(3){
+            color: red;
+            background: green;
+            transform: rotateX(180deg) translate3d(0, 0, 30px);
+        }
+        span.face:nth-child(4){
+            color: red;
+            background: green;
+            transform: rotateX(270deg) translate3d(0, 0, 30px);
+        }
+        @keyframes test1{
+            100%{
+                transform: rotateX(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <figure>
+        <div>
+            <span class="face">1</span>
+            <span class="face">2</span>
+            <span class="face">3</span>
+            <span class="face">4</span>
+        </div>
+    </figure>
+</body>
+</html>
