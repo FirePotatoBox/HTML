@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计时器</title>
+    <link href="" rel="stylesheet" type="text/css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+            background-size: 400%;
+            animation: body-light 12s linear infinite;
+        }
+        
+        @keyframes body-light {
+            100% {
+                background-position: -400%;
+            }
+        }
+        
+        .timer {
+            width: 300px;
+            height: 400px;
+            box-sizing: border-box;
+        }
+        
+        .h-m-s {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            box-sizing: border-box;
+        }
+        
+        .h-m-s>input {
+            display: inline-block;
+            background: transparent;
+            border: transparent;
+            width: 80px;
+            height: 100px;
+            margin: 0 5px;
+            line-height: 100px;
+            font-size: 70px;
+        }
+        
+        .btn {
+            width: 100%;
+            height: 200px;
+            box-sizing: border-box;
+        }
+        
+        .btn>button {
+            width: 100px;
+            height: 50px;
+            font-size: 20px;
+            display: block;
+            margin: 10px auto;
+            cursor: pointer;
+            border-radius: 10px;
+            background: rgb(245, 245, 45);
+        }
+        
+        #timeset {
+            background: transparent;
+            border: transparent;
+            cursor: pointer;
+            color: transparent;
+        }
+        
+        #timeset:hover {
+            color: lightskyblue;
+        }
+    </style>
+    <script>
+        function $(id) {
+            return document.getElementById(id)
+        }
+        window.onload = function() {
+            var count = 0;
+            var timer = null;
+            $("start").onclick = function() {
+                timer = setInterval(() => {
+                    count++;
+                    $("second").value = showNum(count % 60);
+                    $("minute").value = showNum(parseInt(count / 60) % 60);
+                    $("hour").value = showNum(parseInt(count / 3660) % 24);
+                }, 1000)
+                $("start").disabled = true;
+                $("pause").disabled = false;
+                $("reset").disabled = false;
+            }
+            $("pause").onclick = function() {
+                clearInterval(timer);
+                $("start").disabled = false;
+                $("pause").disabled = true;
+            }
+            $("reset").onclick = function() {
+                $("pause").onclick();
+                $("start").disabled = false;
+                $("pause").disabled = true;
+                $("reset").disabled = true;
+                $("hour").value = "00";
+                $("minute").value = "00";
+                $("second").value = "00";
+                count = 0;
+            }
+
+            function showNum(num) {
+                if (num < 10) {
+                    return "0" + num;
+                } else {
+                    return num;
+                }
+            }
+
+            $("timeset").onclick = function() {
+                var timesetnow = setInterval(() => {
+                    var myDate = new Date();
+                    $("hour").value = myDate.getHours();
+                    $("minute").value = myDate.getMinutes();
+                    $("second").value = myDate.getSeconds();
+                }, 1000)
+                $("start").disabled = true;
+                $("pause").disabled = true;
+                $("reset").disabled = true;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="timer">
+        <div class="h-m-s">
+            <input id="hour" type="text" value="00" readonly>:
+            <input id="minute" type="text" value="00" readonly>:
+            <input id="second" type="text" value="00" readonly>
+        </div>
+        <div class="btn">
+            <button id="start">开始</button>
+            <button id="pause" disabled="true">暂停</button>
+            <button id="reset" disabled="true">重置</button>
+        </div>
+        <button id="timeset">时间同步</button>
+    </div>
+</body>
+
+</html>
