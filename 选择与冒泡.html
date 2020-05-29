@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="" type="text/javascript"></script>
+    <link href="" rel="stylesheet" type="text/css">
+    <script>
+        var arr = [70, 20, 30, 40, 50, 12, 3, 6, 59, 84];
+        //冒泡排序
+        function bubble(arr) {
+            for (var i = 0; i < arr.length - 1; i++) {
+                for (var j = 0; j < arr.length - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        var temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+        //选择排序
+        function select(arr) {
+            for (var i = 0; i < arr.length - 1; i++) {
+                for (var j = i + 1; j < arr.length; j++) {
+                    if (arr[i] > arr[j]) {
+                        var temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+
+        function $(id) {
+            return document.getElementById(id);
+        }
+
+        function showBubble() {
+            $("t1").value = bubble(arr);
+        }
+
+        function showSelect() {
+            $("t1").value = select(arr);
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" id="t1">
+    <button onclick="showBubble()">冒泡</button>
+    <button onclick="showSelect()">选择</button>
+</body>
+
+</html>
