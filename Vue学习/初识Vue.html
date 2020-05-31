@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link href="" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        商品：<input type="text" v-model="newProduct.name"> 库存：
+        <input type="number" v-model="newProduct.stock">
+        <button @click="add">添加</button>
+        <p>商品总数：{{product.length}} 商品总库存：{{totalStock}}</p>
+        <ul v-if="product.length>0">
+            <li v-for="(item,index) in product" :key="index">{{item.name}}库存为:{{item.stock}}
+                <button @click="delect(index)">删除</button>
+            </li>
+
+        </ul>
+        <h2 v-else>没有商品</h2>
+        <hr> 姓：
+        <input type="text" v-model="firstName"> 名：
+        <input type="text" v-model="lastName"> 全名：
+        <input type="text" readonly v-model="fullName">
+    </div>
+
+</body>
+<script>
+    var wm = new Vue({
+        el: "#app",
+        data: {
+            title: "商品管理",
+            newProduct: {
+                name: "",
+                stock: 0
+            },
+            product: [{
+                name: "华为",
+                stock: 20
+            }, {
+                name: "小米",
+                stock: 25
+            }, {
+                name: "三星",
+                stock: 2
+            }],
+            firstName: "",
+            lastName: ""
+        },
+        computed: {
+            fullName() {
+                return this.firstName + this.lastName;
+            },
+            totalStock() {
+                //基础循环
+                // var sum = 0;
+                // for (var i = 0; i < this.product.length; i++) {
+                //     sum += +this.product[i].stock;
+                // }
+                // return sum;
+
+
+                //ES6 for(* of *)循环
+                var sum = 0;
+                for (const p of this.product) {
+                    sum += +p.stock;
+                }
+                return sum;
+
+                //ES5 函数编程方式
+                // return this.product.reduce((a, b) => {
+                //     return a + (+b.stock);
+                // }, 0)
+
+            }
+        },
+        methods: {
+            add() {
+                this.product.push({
+                    name: this.newProduct.name,
+                    stock: this.newProduct.stock
+                })
+            },
+            delect(i) {
+                this.product.splice(i, 1);
+            }
+        }
+    })
+</script>
+
+</html>
