@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加载动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000000;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 80px;
+            position: relative;
+            border-bottom: 10px solid #333;
+        }
+        
+        h1::before {
+            content: "LOADING••••••";
+            color: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: lightskyblue;
+            animation: loading 4s linear infinite;
+            background-clip: text;
+            -webkit-background-clip: text;
+            clip-path: inset(0 100% 0 0);
+            -webkit-clip-path: inset(0 100% 0 0);
+            border-bottom: 10px solid lightskyblue;
+            animation: loading 4s linear infinite;
+        }
+        
+        @keyframes loading {
+            100% {
+                clip-path: inset(0 0 0 0);
+                -webkit-clip-path: inset(0 0 0 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>LOADING••••••</h1>
+</body>
+
+</html>
