@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加载3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 45px;
+            border: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1bbc9b;
+        }
+        
+        .first {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: deepskyblue;
+            position: relative;
+        }
+        
+        .second {
+            position: absolute;
+            width: 150px;
+            height: 300px;
+            border-radius: 150px 0 0 150px;
+            background: #fff;
+            transform-origin: 100% 50%;
+            animation: loading-left 8s linear infinite;
+        }
+        
+        .third {
+            width: 150px;
+            height: 300px;
+            border-radius: 0 150px 150px 0;
+            background: #fff;
+            transform-origin: 0 50%;
+            animation: loading-right 8s linear infinite;
+        }
+        
+        .rect1,
+        .rect2 {
+            border: 0;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            position: absolute;
+            overflow: hidden;
+        }
+        
+        .rect1 {
+            left: 0;
+            right: 50%;
+        }
+        
+        .rect2 {
+            right: 0;
+            left: 50%;
+        }
+        
+        .arrow {
+            position: absolute;
+            top: 0;
+            left: 43.33%;
+            line-height: 20px;
+            font-size: 20px;
+            transform-origin: 20px 150px;
+            animation: arrow 8s linear infinite;
+        }
+        
+        .main {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            right: 20px;
+            bottom: 20px;
+            border-radius: 50%;
+            background: #1bbc9b;
+            line-height: 260px;
+            text-align: center;
+        }
+        
+        @keyframes loading-right {
+            50%,
+            100% {
+                transform: rotate(180deg);
+            }
+        }
+        
+        @keyframes arrow {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes loading-left {
+            50% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(180deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="first">
+        <div class="rect1">
+            <div class="second"></div>
+        </div>
+        <div class="rect2">
+            <div class="third"></div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="main">LAODING</div>
+    </div>
+</body>
+
+</html>
