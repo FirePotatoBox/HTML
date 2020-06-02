@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>聚光灯效果</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        body{
+        
+        body {
             background: #222;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
-        h1{
+        
+        h1 {
             color: #333;
             font-size: 8rem;
             position: relative;
         }
-        h1::after{
+        
+        h1::after {
             content: "YOSEEN";
             color: transparent;
             position: absolute;
@@ -29,33 +33,33 @@
             top: 0;
             right: 0;
             bottom: 0;
-            background: -webkit-linear-gradient(
-                left,#c23616,#192a56,#00d2d3,yellow,#60214F,#2e86de,#4cd137,#e84118
-            );
+            background: -webkit-linear-gradient( left, #c23616, #192a56, #00d2d3, yellow, #60214F, #2e86de, #4cd137, #e84118);
             background-clip: text;
             -webkit-background-clip: text;
             clip-path: circle(100px at 0% 50%);
             -webkit-clip-path: circle(100px at 0% 50%);
             animation: light 5s infinite;
         }
-
-        @keyframes light{
-            0%{
+        
+        @keyframes light {
+            0% {
                 clip-path: circle(100px at 0% 50%);
                 -webkit-clip-path: circle(100px at 0% 50%);
             }
-            50%{
+            50% {
                 clip-path: circle(100px at 100% 50%);
                 -webkit-clip-path: circle(100px at 100% 50%);
             }
-            100%{
+            100% {
                 clip-path: circle(100px at 0% 50%);
                 -webkit-clip-path: circle(100px at 0% 50%);
             }
         }
     </style>
 </head>
+
 <body>
     <h1>YOSEEN</h1>
 </body>
+
 </html>
